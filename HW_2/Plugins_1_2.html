@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<head>    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://rawcdn.githack.com/python-visualization/folium/master/folium/templates/leaflet.awesome.rotate.css"/>
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_ae97696f652e431cae6cf9b424e73d12 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+            </style>
+        
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"></script>
+    <script src="https://rawcdn.githack.com/nezasa/iso8601-js-period/master/iso8601.min.js"></script>
+    <script src="https://rawcdn.githack.com/socib/Leaflet.TimeDimension/master/dist/leaflet.timedimension.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/default.min.css"/>
+    <link rel="stylesheet" href="https://rawcdn.githack.com/socib/Leaflet.TimeDimension/master/dist/leaflet.timedimension.control.min.css"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+</head>
+<body>    
+    
+            <div class="folium-map" id="map_ae97696f652e431cae6cf9b424e73d12" ></div>
+        
+</body>
+<script>    
+    
+            var map_ae97696f652e431cae6cf9b424e73d12 = L.map(
+                "map_ae97696f652e431cae6cf9b424e73d12",
+                {
+                    center: [34.1353995517559, 66.60857025882802],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 1,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_15825ec3110041a48e72dffe3751a002 = L.tileLayer(
+                "https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"http://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"http://cartodb.com/attributions\"\u003eCartoDB\u003c/a\u003e, CartoDB \u003ca href =\"http://cartodb.com/attributions\"\u003eattributions\u003c/a\u003e", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            ).addTo(map_ae97696f652e431cae6cf9b424e73d12);
+        
+    
+            L.Control.TimeDimensionCustom = L.Control.TimeDimension.extend({
+                _getDisplayDateFormat: function(date){
+                    var newdate = new moment(date);
+                    console.log(newdate)
+                    return newdate.format("YYYY/MM/DD");
+                }
+            });
+            map_ae97696f652e431cae6cf9b424e73d12.timeDimension = L.timeDimension(
+                {
+                    period: "P1D",
+                }
+            );
+            var timeDimensionControl = new L.Control.TimeDimensionCustom(
+                {"autoPlay": false, "loopButton": true, "maxSpeed": 1, "minSpeed": 0.1, "playerOptions": {"loop": false, "startOver": true, "transitionTime": 200}, "position": "bottomleft", "timeSliderDragUpdate": true}
+            );
+            map_ae97696f652e431cae6cf9b424e73d12.addControl(this.timeDimensionControl);
+
+            var geoJsonLayer = L.geoJson({"type": "FeatureCollection", "features": [{"type": "Feature", "geometry": {"type": "Point", "coordinates": [-36.29902563944794, 127.31377090963787]}, "properties": {"time": "2020-11-05", "id": "point", "icon": "marker", "iconstyle": {"iconUrl": "https://leafletjs.com/examples/geojson/baseball-marker.png", "iconSize": [20, 20]}}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [99.74897624575534, 43.02687029870373]}, "properties": {"time": "2020-11-06", "id": "point", "icon": "marker", "iconstyle": {"iconUrl": "https://leafletjs.com/examples/geojson/baseball-marker.png", "iconSize": [20, 20]}}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [137.63851622563607, 69.81313756958964]}, "properties": {"time": "2020-11-07", "id": "point", "icon": "marker", "iconstyle": {"iconUrl": "https://leafletjs.com/examples/geojson/baseball-marker.png", "iconSize": [20, 20]}}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [83.77119589186805, 18.188849554580507]}, "properties": {"time": "2020-11-08", "id": "point", "icon": "marker", "iconstyle": {"iconUrl": "https://leafletjs.com/examples/geojson/baseball-marker.png", "iconSize": [20, 20]}}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [67.99622542309022, 14.163692475510029]}, "properties": {"time": "2020-11-09", "id": "point", "icon": "marker", "iconstyle": {"iconUrl": "https://leafletjs.com/examples/geojson/baseball-marker.png", "iconSize": [20, 20]}}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [97.22622439440043, 24.688230379772623]}, "properties": {"time": "2020-11-10", "id": "point", "icon": "marker", "iconstyle": {"iconUrl": "https://leafletjs.com/examples/geojson/baseball-marker.png", "iconSize": [20, 20]}}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [63.25430486489872, 26.772141885557016]}, "properties": {"time": "2020-11-11", "id": "point", "icon": "marker", "iconstyle": {"iconUrl": "https://leafletjs.com/examples/geojson/baseball-marker.png", "iconSize": [20, 20]}}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [69.9419487591934, 27.677080264635272]}, "properties": {"time": "2020-11-12", "id": "point", "icon": "marker", "iconstyle": {"iconUrl": "https://leafletjs.com/examples/geojson/baseball-marker.png", "iconSize": [20, 20]}}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [73.42856088721587, 28.455958986723296]}, "properties": {"time": "2020-11-13", "id": "point", "icon": "marker", "iconstyle": {"iconUrl": "https://leafletjs.com/examples/geojson/baseball-marker.png", "iconSize": [20, 20]}}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [72.26217953147778, 19.453269988237903]}, "properties": {"time": "2020-11-14", "id": "point", "icon": "marker", "iconstyle": {"iconUrl": "https://leafletjs.com/examples/geojson/baseball-marker.png", "iconSize": [20, 20]}}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [70.8581205420207, 30.96210045840023]}, "properties": {"time": "2020-11-15", "id": "point", "icon": "marker", "iconstyle": {"iconUrl": "https://leafletjs.com/examples/geojson/baseball-marker.png", "iconSize": [20, 20]}}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [68.80181303738381, 27.16123083023653]}, "properties": {"time": "2020-11-16", "id": "point", "icon": "marker", "iconstyle": {"iconUrl": "https://leafletjs.com/examples/geojson/baseball-marker.png", "iconSize": [20, 20]}}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [67.82851620165171, 29.273453187826842]}, "properties": {"time": "2020-11-17", "id": "point", "icon": "marker", "iconstyle": {"iconUrl": "https://leafletjs.com/examples/geojson/baseball-marker.png", "iconSize": [20, 20]}}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [65.0992363758569, 26.991476501470412]}, "properties": {"time": "2020-11-18", "id": "point", "icon": "marker", "iconstyle": {"iconUrl": "https://leafletjs.com/examples/geojson/baseball-marker.png", "iconSize": [20, 20]}}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [72.60488500543056, 31.282512619144583]}, "properties": {"time": "2020-11-19", "id": "point", "icon": "marker", "iconstyle": {"iconUrl": "https://leafletjs.com/examples/geojson/baseball-marker.png", "iconSize": [20, 20]}}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [72.94475438123166, 30.17310453148039]}, "properties": {"time": "2020-11-20", "id": "point", "icon": "marker", "iconstyle": {"iconUrl": "https://leafletjs.com/examples/geojson/baseball-marker.png", "iconSize": [20, 20]}}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [70.3792013796633, 34.809107956488916]}, "properties": {"time": "2020-11-21", "id": "point", "icon": "marker", "iconstyle": {"iconUrl": "https://leafletjs.com/examples/geojson/baseball-marker.png", "iconSize": [20, 20]}}}, {"type": "Feature", "geometry": {"type": "LineString", "coordinates": [[-36.29902563944794, 127.31377090963787], [99.74897624575534, 43.02687029870373], [137.63851622563607, 69.81313756958964], [83.77119589186805, 18.188849554580507], [67.99622542309022, 14.163692475510029], [97.22622439440043, 24.688230379772623], [63.25430486489872, 26.772141885557016], [69.9419487591934, 27.677080264635272], [73.42856088721587, 28.455958986723296], [72.26217953147778, 19.453269988237903], [70.8581205420207, 30.96210045840023], [68.80181303738381, 27.16123083023653], [67.82851620165171, 29.273453187826842], [65.0992363758569, 26.991476501470412], [72.60488500543056, 31.282512619144583], [72.94475438123166, 30.17310453148039], [70.3792013796633, 34.809107956488916]]}, "properties": {"popup": "Current address", "times": ["2020-11-05", "2020-11-06", "2020-11-07", "2020-11-08", "2020-11-09", "2020-11-10", "2020-11-11", "2020-11-12", "2020-11-13", "2020-11-14", "2020-11-15", "2020-11-16", "2020-11-17", "2020-11-18", "2020-11-19", "2020-11-20", "2020-11-21"], "icon": "circle", "iconstyle": {"fillColor": "green", "fillOpacity": 0.6, "stroke": "false", "radius": 2}, "style": {"weight": 0}, "id": "man"}}]}, {
+                    pointToLayer: function (feature, latLng) {
+                        if (feature.properties.icon == 'marker') {
+                            if(feature.properties.iconstyle){
+                                return new L.Marker(latLng, {
+                                    icon: L.icon(feature.properties.iconstyle)});
+                            }
+                            //else
+                            return new L.Marker(latLng);
+                        }
+                        if (feature.properties.icon == 'circle') {
+                            if (feature.properties.iconstyle) {
+                                return new L.circleMarker(latLng, feature.properties.iconstyle)
+                                };
+                            //else
+                            return new L.circleMarker(latLng);
+                        }
+                        //else
+
+                        return new L.Marker(latLng);
+                    },
+                    style: function (feature) {
+                        return feature.properties.style;
+                    },
+                    onEachFeature: function(feature, layer) {
+                        if (feature.properties.popup) {
+                        layer.bindPopup(feature.properties.popup);
+                        }
+                    }
+                })
+
+            var timestamped_geo_json_d7ee16c594764efa91b723a07274a3cc = L.timeDimension.layer.geoJson(
+                geoJsonLayer,
+                {
+                    updateTimeDimension: true,
+                    addlastPoint: true,
+                    duration: "P13D",
+                }
+            ).addTo(map_ae97696f652e431cae6cf9b424e73d12);
+        
+</script>
